@@ -1,0 +1,131 @@
+<html>
+<div id="my_dataviz" style="float:left">
+  <h3>Visualization 3: 2014-2018 NICS Firearm Background Checks in the US, Monthly</h3>
+  <h3>X-Axis: Date</h3>
+  <h3>Y-Axis: Number of Firearm Background Checks</h3>
+</div>
+<div id="my_dataviz2" style="float:left">
+  <h3>Visualization 4: 2014-2018 Gun Violence in the US, Monthly</h3>
+  <h3>X-Axis: Date</h3>
+  <h3>Y-Axis: Number of Firearm-Related Incidents (Deaths + Injuries)</h3>
+</div>
+<button onclick="location.href = 'https://neiljwu.github.io/uiuc-cs416-narrative-viz/index2.html';" id="2Back">Back</button>
+<button onclick="location.href = 'https://neiljwu.github.io/uiuc-cs416-narrative-viz/index4.html';" id="2Next">Next</button>
+<script src='https://d3js.org/d3.v4.min.js'></script>
+<style> rect {fill: lightblue; stroke: black; }</style>
+<body>
+<svg width=1200 height=1000>
+</svg>
+<script>
+  var margin = {top: 100, right: 100, bottom: 100, left: 100},
+      width = 800 - margin.left - margin.right,
+      height = 800 - margin.top - margin.bottom;
+
+  var svg = d3.select("#my_dataviz")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")")
+
+  d3.csv("massaged_data/background-checks-14-18.csv",
+
+    function(d){
+      return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+    },
+
+    function(data) {
+
+      var x = d3.scaleTime()
+        .domain(d3.extent(data, function(d) { return d.date; }))
+        .range([ 0, width ]);
+      svg.append("g")
+        .attr("transform", "translate(0," + (height+5) + ")")
+        .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")));
+
+      var y = d3.scaleLinear()
+        .domain( [500000,5000000] )
+        .range([ height, 0 ]);
+      svg.append("g")
+        .attr("transform", "translate(-5,0)")
+        .call(d3.axisLeft(y).tickSizeOuter(0));
+
+      svg.append("path")
+        .datum(data)
+        .attr("fill", "#69b3a2")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.date) })
+          .y0( height )
+          .y1(function(d) { return y(d.value) })
+          )
+
+      svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#69b3a2")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.date) })
+          .y(function(d) { return y(d.value) })
+          )
+  });
+  
+  var svg2 = d3.select("#my_dataviz2")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")")
+
+  d3.csv("massaged_data/monthly-gun-violence-14-18.csv",
+
+    function(d){
+      return { date : d3.timeParse("%Y-%m")(d.date), value : d.value }
+    },
+
+    function(data) {
+
+      var x = d3.scaleTime()
+        .domain([new Date("2014-01"),new Date("2018-03")])
+        .range([ 0, width ]);
+      svg2.append("g")
+        .attr("transform", "translate(0," + (height+5) + ")")
+        .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")));
+
+      var y2 = d3.scaleLinear()
+        .domain( [0,5000] )
+        .range([ height, 0 ]);
+      svg2.append("g")
+        .attr("transform", "translate(-5,0)")
+        .call(d3.axisLeft(y2).tickSizeOuter(0));
+
+      svg2.append("path")
+        .datum(data)
+        .attr("fill", "blue")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.date) })
+          .y0( height )
+          .y1(function(d) { return y2(d.value) })
+          )
+
+      svg2.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "blue")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.date) })
+          .y(function(d) { return y2(d.value) })
+          )
+    
+  });
+    
+</script>
+</body>
+</html>
