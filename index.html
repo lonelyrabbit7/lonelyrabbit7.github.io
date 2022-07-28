@@ -24,10 +24,10 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
 
-  d3.csv("massaged_data/massaged-nics-firearm-background-checks.csv",
+  d3.csv("massaged_data/1.csv",
 
     function(d){
-      return { date : d.date, value : d.value }
+      return { date : d.year, value : d.World }
     },
 
     function(data) {
@@ -40,7 +40,7 @@
         .call(d3.axisBottom(x).ticks(22).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")))
 
       var y = d3.scaleLinear()
-        .domain( [0,5000000] )
+        .domain( [8.7,42.6] )
         .range([ height, 0 ]);
       svg.append("g")
         .attr("transform", "translate(-5,0)")
