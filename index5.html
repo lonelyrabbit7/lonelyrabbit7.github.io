@@ -1,0 +1,153 @@
+{
+    "children": [{
+            "name": "D3.js",
+            "weight": 100
+        },
+        {
+            "name": "Echarts.js",
+            "weight": 77
+        },
+        {
+            "name": "JavaScript",
+            "weight": 70
+        },
+        {
+            "name": "C/C++",
+            "weight": 66
+        },
+        {
+            "name": "Java",
+            "weight": 66
+        },
+        {
+            "name": "PHP",
+            "weight": 56
+        },
+        {
+            "name": "Ruby",
+            "weight": 69
+        },
+        {
+            "name": "Python",
+            "weight": 73
+        },
+        {
+            "name": "Windows",
+            "weight": 44
+        },
+        {
+            "name": "Linux",
+            "weight": 90
+        },
+        {
+            "name": "Unix",
+            "weight": 85
+        },
+        {
+            "name": "JSON",
+            "weight": 40
+        },
+        {
+            "name": "XML",
+            "weight": 20
+        },
+        {
+            "name": "JQuery",
+            "weight": 44
+        },
+        {
+            "name": "AngularJS",
+            "weight": 44
+        },
+        {
+            "name": "ajax",
+            "weight": 20
+        },
+        {
+            "name": "Node.js",
+            "weight": 78
+        },
+        {
+            "name": "Go",
+            "weight": 54
+        },
+        {
+            "name": "Swift",
+            "weight": 24
+        },
+        {
+            "name": "HTTP",
+            "weight": 8
+        },
+        {
+            "name": "Android",
+            "weight": 14
+        },
+        {
+            "name": "iOS",
+            "weight": 10
+        }
+    ]
+}
+
+d3.json("js/newsAndrumor/data/themeBubble.json", function (error, root) {
+    // 定义布局方式
+    let pack = d3.pack()
+        .size([width, height])
+        .padding(2);
+
+    let data = d3.hierarchy(root)
+        .sum(function (d) {
+            return d.weight;
+        });
+    let nodes = pack(data).descendants();
+    drawBubbleChart(nodes, pack);
+});
+
+function drawBubbleChart(nodes, pack) {
+let color = d3.scaleOrdinal(d3.schemeCategory20);
+
+let bubbles = d3.select("#theme_svg").selectAll(".bubble")
+    .data(nodes)
+    .enter()
+    .filter(function (d) {
+        return !d.children;
+    })
+    .append("g")
+    .attr("class", "bubble")
+    .on("click",bubble_click);
+
+bubbles.append("circle")
+    .style("fill", function (d, i) {
+        return color(i);
+    })
+    .attr("cx", function (d) {
+        return d.x;
+    })
+    .attr("cy", function (d) {
+        return d.y;
+    })
+    .attr("r", function (d) {
+        return d.r;
+    })
+    .append("svg:title")
+    .text(function(d){
+        return d.data.name + ":" + d.data.weight;
+    });
+
+bubbles.append("text")
+    .attr("dy", ".2em")
+    .style("text-anchor", "middle")
+    .attr("x", function (d) {
+        return d.x;
+    })
+    .attr("y", function (d) {
+        return d.y;
+    })
+    .text(function (d) {
+        return d.data.name.substring(0, d.r / 3);
+    })
+    .style("font-size",function(d){
+        return d.r / 2.5;
+    });
+}
