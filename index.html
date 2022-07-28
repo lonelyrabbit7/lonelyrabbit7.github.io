@@ -1,8 +1,8 @@
 <html>
 <div id="my_dataviz" style="float:left">
-  <h1>Visualization 1: 1999-2021 NICS Firearm Background Checks in the US, Monthly</h1>
-  <h3>X-Axis: Date</h3>
-  <h3>Y-Axis: Number of Firearm Background Checks</h3>
+  <h1>Visualization 1: Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) - World </h1>
+  <h3>X-Axis: Year</h3>
+  <h3>Y-Axis: Poverty headcount ratio </h3>
 </div>
 <button onclick="location.href = 'https://lonelyrabbit7.github.io/index2.html';" id="1Next">Next</button>
 <script src='https://d3js.org/d3.v4.min.js'></script>
@@ -36,14 +36,14 @@
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([ 0, width ]);
       svg.append("g")
-        .attr("transform", "translate(0," + (height+5) + ")")
+        .attr("transform", "translate(0," + (height) + ")")
         .call(d3.axisBottom(x).ticks(22).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")))
 
       var y = d3.scaleLinear()
         .domain( [8.7,42.6] )
         .range([ height, 0 ]);
       svg.append("g")
-        .attr("transform", "translate(-5,0)")
+        .attr("transform", "translate(0,0)")
         .call(d3.axisLeft(y).tickSizeOuter(0))
 
       svg.append("path")
