@@ -24,7 +24,7 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
 
-  d3.csv("massaged_data/cost.csv",
+  d3.csv("massaged_data/2.csv",
 
     function(d){
       return { cost : d.cost, affordability : d.affordability ,country:d.country,Percent:d.Percent,population:d.population}
