@@ -24,10 +24,10 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
 
-  d3.csv("massaged_data/2.csv",
+  d3.csv("massaged_data/1.csv",
 
     function(d){
-      return { date : d.Percent, value : d.cost }
+      return { date : d.year, value : d.World }
     },
 
     function(data) {
@@ -37,14 +37,14 @@
         .range([ 0, width ]);
       svg.append("g")
         .attr("transform", "translate(0," + (height) + ")")
-        .call(d3.axisBottom(x).tickSizeOuter(20))
+        .call(d3.axisBottom(x))
 
       var y = d3.scaleLinear()
         .domain( [0,100] )
         .range([ height, 0 ]);
       svg.append("g")
         .attr("transform", "translate(0,0)")
-        .call(d3.axisLeft(y).tickSizeOuter(0))
+        .call(d3.axisLeft(y))
 
     
 //       svg.append("path")
@@ -53,8 +53,8 @@
 //         .attr("stroke", "#00BFFF")
 //         .attr("stroke-width", 4)
 //         .attr("d", d3.circle()
-//           .cx(function(d) { return x(d.date) })
-//           .cy(function(d) { return y(d.value) })
+//           .cx(function(d) { return d.date })
+//           .cy(function(d) { return d.value })
 //           .r(5)
 //           )
           
