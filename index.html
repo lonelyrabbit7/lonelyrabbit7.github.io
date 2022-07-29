@@ -33,11 +33,11 @@
     function(data) {
 
       var x = d3.scaleTime()
-        .domain(d3.extent(data, function(d) { return d.year; }))
+        .domain(d3.extent(data, function(d) { return d.date; }))
         .range([ 0, width ]);
       svg.append("g")
         .attr("transform", "translate(0," + (height) + ")")
-        .call(d3.axisBottom(x).ticks(22).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")))
+        .call(d3.axisBottom(x))
 
       var y = d3.scaleLinear()
         .domain( [8.7,42.6] )
