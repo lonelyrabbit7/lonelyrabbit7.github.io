@@ -24,23 +24,23 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
 
-  d3.csv("massaged_data/1.csv",
+  d3.csv("massaged_data/2.csv",
 
     function(d){
-      return { date : d.year, value : d.World }
+      return { cost : d.cost, affordability : d.affordability ,country:d.country,Percent:d.Percent,population:d.population}
     },
 
     function(data) {
 
       var x = d3.scaleTime()
-        .domain(d3.extent(data, function(d) { return d.date; }))
+        .domain([1,7])
         .range([ 0, width ]);
       svg.append("g")
         .attr("transform", "translate(0," + (height) + ")")
         .call(d3.axisBottom(x).ticks(22).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")))
 
       var y = d3.scaleLinear()
-        .domain( [8.7,42.6] )
+        .domain( [0,1] )
         .range([ height, 0 ]);
       svg.append("g")
         .attr("transform", "translate(0,0)")
@@ -48,56 +48,37 @@
 
     
 
-      svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "#00BFFF")
-        .attr("stroke-width", 4)
-        .attr("d", d3.line()
-          .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.value) })
-          )
-    
+      
       svg.selectAll("myCircles")
         .data(data)
         .enter()
         .append("circle")
           .attr("fill", "#00BFFF")
           .attr("stroke", "none")
-          .attr("cx", function(d) { return x(d.date) })
-          .attr("cy", function(d) { return y(d.value) })
-          .attr("r", 5)
+          .attr("cx", function(d) { return x(d.cost) })
+          .attr("cy", function(d) { return y(d.Percent) })
+        //   .attr("r", function(d){return d.population/2000;})
+        .attr("r", 10)
           .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("poverty ratio : " + d.value);
           })
           .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+90) + "px");})
           .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     
     // create a tooltip
-    var tooltip = d3.select("#my_dataviz")
-      .append("div")
-        .style("position", "absolute")
-        .style("visibility", "visible")
-        .style("background-color", "white")
-        .style("border", "solid")
-        .style("border-width", "1px")
-        .style("border-radius", "5px")
-        .style("padding", "10px");
+    // var tooltip = d3.select("#my_dataviz")
+    //   .append("div")
+    //     .style("position", "absolute")
+    //     .style("visibility", "visible")
+    //     .style("background-color", "white")
+    //     .style("border", "solid")
+    //     .style("border-width", "1px")
+    //     .style("border-radius", "5px")
+    //     .style("padding", "10px");
     
    
   
    
-    svg.append("line")
-      .attr("x1", x(new Date("2014")))
-      .attr("y1", y(0))
-      .attr("x2", x(new Date("2014")))
-      .attr("y2", y(5))
-      .style("stroke-width", 2)
-      .style("stroke", "red")
-      .style("fill", "none")
-      .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("Dec 14, 2012: Sandy Hook Elementary School shooting");
-          })
-      .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+90) + "px");})
-      .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
   });
 </script>
 </body>
