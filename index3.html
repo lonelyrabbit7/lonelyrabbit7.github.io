@@ -48,16 +48,18 @@
     
 
       
-      svg.selectAll("circle")
+       
+      svg.selectAll("myCircles")
         .data(data)
         .enter()
         .append("circle")
-          .attr("fill", "#00BFFF")
+          .attr("fill", "red")
           .attr("stroke", "none")
           .attr("cx", function(d) { return x(d.cost) })
           .attr("cy", function(d) { return y(d.Percent) })
-        //   .attr("r", function(d){return d.population/2000;})
-        .attr("r",  function(d) { return x(d.population/2000) });
+          .attr("r", 5);
+          
+    
           
     
     // create a tooltip
