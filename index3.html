@@ -60,7 +60,10 @@
           
     svg.selectAll("circle")
         .data(data).enter()
+       
         .append("circle")
+        .attr("fill", "#00BFFF")
+        .attr("stroke", "none")
         .attr("cx", function(d) { return x(d.date)})
         .attr("cy", function(d) { return y(d.value)})
         .attr("r", function(d) {
@@ -83,15 +86,15 @@
 //           .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     
     // create a tooltip
-    var tooltip = d3.select("#my_dataviz")
-      .append("div")
-        .style("position", "absolute")
-        .style("visibility", "visible")
-        .style("background-color", "white")
-        .style("border", "solid")
-        .style("border-width", "1px")
-        .style("border-radius", "5px")
-        .style("padding", "10px");
+//     var tooltip = d3.select("#my_dataviz")
+//       .append("div")
+//         .style("position", "absolute")
+//         .style("visibility", "visible")
+//         .style("background-color", "white")
+//         .style("border", "solid")
+//         .style("border-width", "1px")
+//         .style("border-radius", "5px")
+//         .style("padding", "10px");
     
    
   
