@@ -48,15 +48,15 @@
 
     
 
-      svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "#00BFFF")
-        .attr("stroke-width", 4)
-        .attr("d", d3.line()
-          .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.value) })
-          )
+//       svg.append("path")
+//         .datum(data)
+//         .attr("fill", "none")
+//         .attr("stroke", "#00BFFF")
+//         .attr("stroke-width", 4)
+//         .attr("d", d3.line()
+//           .x(function(d) { return x(d.date) })
+//           .y(function(d) { return y(d.value) })
+//           )
     
       svg.selectAll("myCircles")
         .data(data)
