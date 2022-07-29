@@ -60,21 +60,14 @@
             return d.population/200 >2?d.population/200 :2
         }) 
         .style("opacity",0.5)
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text(d.country+"cost of a healthy diet:" + d.cost+"Number of people who cannot afford a healthy diet"+d.population);
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text(d.country\\\+"cost of a healthy diet:" + d.cost+"Number of people who cannot afford a healthy diet"+d.population);
           })
+        
           .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+10) + "px");})
           .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     
     
-//       svg.selectAll("myCircles")
-//         .data(data)
-//         .enter()
-//         .append("circle")
-//           .attr("fill", "#00BFFF")
-//           .attr("stroke", "none")
-//           .attr("cx", function(d) { return x(d.date) })
-//           .attr("cy", function(d) { return y(d.value) })
-//           .attr("r", 5)
+
 
     
     // create a tooltip
