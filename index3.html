@@ -32,7 +32,7 @@
 
     function(data) {
 
-      var x = d3.scaleTime()
+      var x = d3.scaleLinear()
         .domain([1,7])
         .range([ 0, width ]);
       svg.append("g")
