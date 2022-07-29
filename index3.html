@@ -33,18 +33,18 @@
     function(data) {
 
       var x = d3.scaleLinear()
-        .domain([0，8])
+        .domain([1980,2020])
         .range([ 0, width ]);
       svg.append("g")
         .attr("transform", "translate(0," + (height) + ")")
-        .call(d3.axisBottom(x))
+        .call(d3.axisBottom(x).tickSizeOuter(20))
 
       var y = d3.scaleLinear()
-        .domain( [0,100] )
+        .domain( [8.7,42.6] )
         .range([ height, 0 ]);
       svg.append("g")
         .attr("transform", "translate(0,0)")
-        .call(d3.axisLeft(y))
+        .call(d3.axisLeft(y).tickSizeOuter(0))
 
     
 //       svg.append("path")
@@ -53,8 +53,8 @@
 //         .attr("stroke", "#00BFFF")
 //         .attr("stroke-width", 4)
 //         .attr("d", d3.circle()
-//           .cx(function(d) { return d.date })
-//           .cy(function(d) { return d.value })
+//           .cx(function(d) { return x(d.date) })
+//           .cy(function(d) { return y(d.value) })
 //           .r(5)
 //           )
           
@@ -98,19 +98,7 @@
     
    
   
-   
-    svg.append("line")
-      .attr("x1", x(new Date("2014")))
-      .attr("y1", y(0))
-      .attr("x2", x(new Date("2014")))
-      .attr("y2", y(5))
-      .style("stroke-width", 2)
-      .style("stroke", "red")
-      .style("fill", "none")
-      .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("Dec 14, 2012: Sandy Hook Elementary School shooting");
-          })
-      .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+90) + "px");})
-      .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+  
   });
 </script>
 </body>
