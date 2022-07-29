@@ -1,187 +1,187 @@
-country ,cost
-Albania,3.952
-Algeria,3.763
-Angola,4.327
-Anguilla,3.717
-Antigua and Barbuda,4.112
-Argentina,3.341
-Armenia,3.096
-Aruba,3.418
-Australia,2.259
-Austria,2.772
-Azerbaijan,2.348
-"Bahamas, The",4.276
-Bahrain,3.379
-Bangladesh,2.882
-Barbados,..
-Belarus,3.177
-Belgium,2.862
-Belize,2.476
-Benin,3.55
-Bermuda,4.072
-Bhutan,4.383
-Bolivia,3.551
-Bonaire,..
-Bosnia and Herzegovina,3.847
-Botswana,3.622
-Brazil,2.809
-British Virgin Islands,3.235
-Brunei Darussalam,4.126
-Bulgaria,3.78
-Burkina Faso,3.173
-Burundi,2.988
-Cabo Verde,3.358
-Cambodia,3.618
-Cameroon,2.616
-Canada,2.863
-Cayman Islands,2.928
-Central African Republic,3.423
-Chad,2.831
-Chile,3.053
-China,2.571
-Colombia,2.863
-Comoros,..
-"Congo, Dem. Rep.",2.921
-"Congo, Rep.",3.343
-Costa Rica,3.961
-Côte d'Ivoire,3.273
-Croatia,4.168
-Curacao,2.866
-Cyprus,2.846
-Czech Republic,2.899
-Denmark,2.376
-Djibouti,2.797
-Dominica,4
-Dominican Republic,3.521
-East Asia & Pacific,3.7
-Ecuador,2.788
-"Egypt, Arab Rep.",3.457
-El Salvador,..
-Equatorial Guinea,3.526
-Estonia,3.125
-Eswatini,3.428
-Ethiopia,3.108
-Europe & Central Asia,2.954
-Fiji,3.612
-Finland,2.545
-France,2.936
-Gabon,3.358
-"Gambia, The",2.942
-Germany,2.786
-Ghana,3.767
-Greece,3.037
-Grenada,5.382
-Guinea,3.655
-Guinea-Bissau,3.164
-Guyana,4.629
-Haiti,3.93
-High income,3.138
-Honduras,3.36
-"Hong Kong SAR, China",3.659
-Hungary,3.302
-Iceland,2.213
-India,2.824
-Indonesia,4.129
-"Iran, Islamic Rep.",3.005
-Iraq,3.378
-Ireland,2.397
-Israel,2.436
-Italy,2.885
-Jamaica,5.975
-Japan,5.529
-Jordan,3.412
-Kazakhstan,2.391
-Kenya,2.846
-"Korea, Rep.",4.712
-Kuwait,3.344
-Kyrgyz Republic,2.97
-Lao PDR,3.776
-Latin America & Caribbean,3.619
-Latvia,3.124
-Lesotho,3.77
-Liberia,4.018
-Lithuania,3.003
-Low income,3.084
-Lower middle income,3.398
-Luxembourg,2.492
-Madagascar,2.987
-Malawi,2.724
-Malaysia,3.224
-Maldives,3.581
-Mali,2.9
-Malta,3.494
-Mauritania,3.451
-Mauritius,3.313
-Mexico,2.993
-Middle East & North Africa,3.14
-Moldova,2.46
-Mongolia,4.544
-Montenegro,3.397
-Montserrat,4.883
-Morocco,2.71
-Mozambique,3.031
-Myanmar,3.706
-Namibia,3.255
-Nepal,4.127
-Netherlands,2.743
-New Zealand,2.671
-Nicaragua,3.191
-Niger,2.85
-Nigeria,3.565
-North America,3.386
-North Macedonia,3.318
-Norway,3.325
-Oman,2.815
-Pakistan,3.408
-Panama,4.225
-Paraguay,3.43
-Peru,3.084
-Philippines,3.843
-Poland,2.909
-Portugal,2.513
-Qatar,2.375
-Romania,2.921
-Russian Federation,3.149
-Rwanda,2.609
-Sao Tome and Principe,3.288
-Saudi Arabia,3.441
-Senegal,2.19
-Serbia,4.07
-Seychelles,4.01
-Sierra Leone,2.842
-Singapore,2.775
-Sint Maarten (Dutch part),4.462
-Slovak Republic,3.013
-Slovenia,2.798
-South Africa,4.102
-South Asia,3.558
-Spain,2.699
-Sri Lanka,3.702
-St. Kitts and Nevis,2.998
-St. Lucia,3.263
-St. Vincent and the Grenadines,4.131
-Sub-Saharan Africa,3.249
-Sudan,3.674
-Suriname,4.969
-Sweden,3.086
-Switzerland,2.523
-"Taiwan, China",3.99
-Tajikistan,3.027
-Tanzania,2.598
-Thailand,3.971
-Togo,..
-Trinidad and Tobago,3.928
-Tunisia,3.476
-Türkiye,2.873
-Turks and Caicos Islands,2.809
-Uganda,2.749
-United Arab Emirates,2.755
-United Kingdom,1.822
-United States,3.225
-Upper middle income,3.524
-Uruguay,3.073
-Vietnam,3.586
-West Bank and Gaza,3.342
-World,3.314
-Zambia,3.085
-Zimbabwe,3.456
+country ,cost,percent
+Albania,3.952,37.8
+Algeria,3.763,27.9
+Angola,4.327,19.8
+Anguilla,3.717,20.1
+Antigua and Barbuda,4.112,35.2
+Argentina,3.341,33.9
+Armenia,3.096,31.8
+Aruba,3.418,30.2
+Australia,2.259,92.9
+Austria,2.772,93.4
+Azerbaijan,2.348,93.9
+"Bahamas, The",4.276,94.3
+Bahrain,3.379,..
+Bangladesh,2.882,..
+Barbados,..,..
+Belarus,3.177,..
+Belgium,2.862,..
+Belize,2.476,..
+Benin,3.55,..
+Bermuda,4.072,..
+Bhutan,4.383,11
+Bolivia,3.551,..
+Bonaire,..,..
+Bosnia and Herzegovina,3.847,..
+Botswana,3.622,40.9
+Brazil,2.809,41.7
+British Virgin Islands,3.235,43.6
+Brunei Darussalam,4.126,42.9
+Bulgaria,3.78,..
+Burkina Faso,3.173,..
+Burundi,2.988,..
+Cabo Verde,3.358,..
+Cambodia,3.618,0.7
+Cameroon,2.616,0.7
+Canada,2.863,0.7
+Cayman Islands,2.928,0.7
+Central African Republic,3.423,0.6
+Chad,2.831,0.8
+Chile,3.053,0.8
+China,2.571,0.8
+Colombia,2.863,0
+Comoros,..,0
+"Congo, Dem. Rep.",2.921,0
+"Congo, Rep.",3.343,0
+Costa Rica,3.961,..
+Côte d'Ivoire,3.273,..
+Croatia,4.168,..
+Curacao,2.866,..
+Cyprus,2.846,..
+Czech Republic,2.899,..
+Denmark,2.376,..
+Djibouti,2.797,..
+Dominica,4,77.4
+Dominican Republic,3.521,74.6
+East Asia & Pacific,3.7,73.5
+Ecuador,2.788,73.5
+"Egypt, Arab Rep.",3.457,..
+El Salvador,..,..
+Equatorial Guinea,3.526,..
+Estonia,3.125,..
+Eswatini,3.428,0.8
+Ethiopia,3.108,0.5
+Europe & Central Asia,2.954,0.3
+Fiji,3.612,0.2
+Finland,2.545,0.3
+France,2.936,0.2
+Gabon,3.358,0.2
+"Gambia, The",2.942,0.2
+Germany,2.786,39.4
+Ghana,3.767,37.4
+Greece,3.037,37
+Grenada,5.382,36.4
+Guinea,3.655,90.7
+Guinea-Bissau,3.164,87.1
+Guyana,4.629,82.9
+Haiti,3.93,82.9
+High income,3.138,..
+Honduras,3.36,..
+"Hong Kong SAR, China",3.659,..
+Hungary,3.302,..
+Iceland,2.213,57.6
+India,2.824,52.2
+Indonesia,4.129,50
+"Iran, Islamic Rep.",3.005,53
+Iraq,3.378,30.2
+Ireland,2.397,28.6
+Israel,2.436,25.4
+Italy,2.885,24.7
+Jamaica,5.975,..
+Japan,5.529,..
+Jordan,3.412,..
+Kazakhstan,2.391,..
+Kenya,2.846,4.6
+"Korea, Rep.",4.712,4
+Kuwait,3.344,3.6
+Kyrgyz Republic,2.97,3.7
+Lao PDR,3.776,63.8
+Latin America & Caribbean,3.619,61.5
+Latvia,3.124,60.8
+Lesotho,3.77,61.4
+Liberia,4.018,
+Lithuania,3.003,
+Low income,3.084,
+Lower middle income,3.398,
+Luxembourg,2.492,
+Madagascar,2.987,
+Malawi,2.724,
+Malaysia,3.224,
+Maldives,3.581,
+Mali,2.9,
+Malta,3.494,
+Mauritania,3.451,
+Mauritius,3.313,
+Mexico,2.993,
+Middle East & North Africa,3.14,
+Moldova,2.46,
+Mongolia,4.544,
+Montenegro,3.397,
+Montserrat,4.883,
+Morocco,2.71,
+Mozambique,3.031,
+Myanmar,3.706,
+Namibia,3.255,
+Nepal,4.127,
+Netherlands,2.743,
+New Zealand,2.671,
+Nicaragua,3.191,
+Niger,2.85,
+Nigeria,3.565,
+North America,3.386,
+North Macedonia,3.318,
+Norway,3.325,
+Oman,2.815,
+Pakistan,3.408,
+Panama,4.225,
+Paraguay,3.43,
+Peru,3.084,
+Philippines,3.843,
+Poland,2.909,
+Portugal,2.513,
+Qatar,2.375,
+Romania,2.921,
+Russian Federation,3.149,
+Rwanda,2.609,
+Sao Tome and Principe,3.288,
+Saudi Arabia,3.441,
+Senegal,2.19,
+Serbia,4.07,
+Seychelles,4.01,
+Sierra Leone,2.842,
+Singapore,2.775,
+Sint Maarten (Dutch part),4.462,
+Slovak Republic,3.013,
+Slovenia,2.798,
+South Africa,4.102,
+South Asia,3.558,
+Spain,2.699,
+Sri Lanka,3.702,
+St. Kitts and Nevis,2.998,
+St. Lucia,3.263,
+St. Vincent and the Grenadines,4.131,
+Sub-Saharan Africa,3.249,
+Sudan,3.674,
+Suriname,4.969,
+Sweden,3.086,
+Switzerland,2.523,
+"Taiwan, China",3.99,
+Tajikistan,3.027,
+Tanzania,2.598,
+Thailand,3.971,
+Togo,..,
+Trinidad and Tobago,3.928,
+Tunisia,3.476,
+Türkiye,2.873,
+Turks and Caicos Islands,2.809,
+Uganda,2.749,
+United Arab Emirates,2.755,
+United Kingdom,1.822,
+United States,3.225,
+Upper middle income,3.524,
+Uruguay,3.073,
+Vietnam,3.586,
+West Bank and Gaza,3.342,
+World,3.314,
+Zambia,3.085,
+Zimbabwe,3.456,
