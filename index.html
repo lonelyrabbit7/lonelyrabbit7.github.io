@@ -13,18 +13,26 @@
 <svg width=1200 height=1000>
 </svg>
 <script>
-  var margin = {top: 100, right: 100, bottom: 100, left: 100},
-      width = 1200 - margin.left - margin.right,
-      height = 800 - margin.top - margin.bottom;
+  var margin = 100,
+      width = 1000,
+      height = 600;
   
   var svg = d3.select("#my_dataviz")
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
       .append("g")
       .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")")
+            "translate(" + margin + "," + margin + ")")
 
+  d3.select('#my_dataviz').append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0)
+        .attr("x", 0 + (height / 2 + margin))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Average Highway MPG");
+  
   d3.csv("massaged_data/1.csv",
 
     function(d){
