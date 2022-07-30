@@ -15,7 +15,7 @@
   var margin = {top: 100, right: 100, bottom: 100, left: 100},
       width = 1200 - margin.left - margin.right,
       height = 800 - margin.top - margin.bottom;
-
+  var tooltip=d3.select("#tooltip");
   var svg = d3.select("#my_dataviz")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -74,17 +74,17 @@
           .html("ok ")
         })
         .on("mouseout",function(){tooltip.style("opacity",0)});
-    
+  
     // create a tooltip
-    var tooltip = d3.select("#my_dataviz")
-      .append("div")
-        .style("position", "absolute")
-        .style("visibility", "visible")
-        .style("background-color", "white")
-        .style("border", "solid")
-        .style("border-width", "1px")
-        .style("border-radius", "1px")
-        .style("padding", "1px");
+//     var tooltip = d3.select("#my_dataviz")
+//       .append("div")
+//         .style("position", "absolute")
+//         .style("visibility", "visible")
+//         .style("background-color", "white")
+//         .style("border", "solid")
+//         .style("border-width", "1px")
+//         .style("border-radius", "1px")
+//         .style("padding", "1px");
     
    
   
