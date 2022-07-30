@@ -37,14 +37,22 @@
 
     svg.append("text")
         
-        .attr("y",40)
+        .attr("y",15)
         .attr("x", 210)
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .attr("fill","red")
-        .attr("font-size",15)
-        .text("Since 1989 year,Poverty headcount ratio decreases drmatically ");
-      svg.append("text")
+        .attr("font-size",10)
+        .text("Since 1989 year,Poverty ");
+        .attr("y",30)
+        .attr("x", 210)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .attr("fill","red")
+        .attr("font-size",10)
+        .text("headcount ratio decreases drmatically ");
+      
+    svg.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", -50)
         .attr("x", -190)
