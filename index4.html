@@ -65,16 +65,16 @@ var margin =100;
         .range([ height, 0 ]);				
      svg1.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", -90)
+        .attr("y", -70)
         .attr("x", -250)
         .attr("dy", "1em")
         .style("text-anchor", "middle")
-        .text("Poverty headcount ratio at $1.90 a day ");
+        .text("number of people in food poverty(millions) ");
      
       svg1.append("text")
      
         .attr("y",620)
-        .attr("x", 260)
+        .attr("x", 320)
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("Year");
@@ -191,7 +191,20 @@ function(data) {
         .style("border-width", "1px")
         .style("border-radius", "5px")
         .style("padding", "10px");  
-
+   svg2.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -70)
+        .attr("x", -250)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("number of people in food poverty(millions) ");
+     
+    svg2.append("text")
+        .attr("y",620)
+        .attr("x", 320)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Year");
   svg2.append("g")
         .attr("transform", "translate(0," + (height) + ")")
         .call(d3.axisBottom(x2).tickSizeOuter(20))
