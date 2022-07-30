@@ -27,7 +27,7 @@
   d3.csv("massaged_data/poverty.csv",
 
     function(d){
-      return { african : d.african, year : d.year,other:d.other }
+      return { subSaharan:d.subSaharan , african : d.african, year : d.year,other:d.other }
     },
 
     function(data) {
@@ -77,34 +77,61 @@
       svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#00BFFF")
+        .attr("stroke", "#D3D3D3")
         .attr("stroke-width", 4)
         .attr("d", d3.line()
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.other) })
           )
-	 svg.append("path")
+	svg.append("path")
+        .datum(data)
+        .attr("fill", "#D3D3D3")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.year) })
+          .y0( height )
+          .y1(function(d) {return y(d.other) })
+          )
+      svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#55BFFF")
+        .attr("stroke", "#FF7F50")
         .attr("stroke-width", 4)
         .attr("d", d3.line()
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.african) })
           )
-    
-     
-    // create a tooltip
-//     var tooltip = d3.select("#my_dataviz")
-//       .append("div")
-//         .style("position", "absolute")
-//         .style("visibility", "visible")
-//         .style("background-color", "white")
-//         .style("border", "solid")
-//         .style("border-width", "1px")
-//         .style("border-radius", "5px")
-//         .style("padding", "10px");
-    
+	svg.append("path")
+        .datum(data)
+        .attr("fill", "#FF7F50")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.year) })
+          .y0( height )
+          .y1(function(d) {return y(d.subSaharan) })
+          )
+     svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#A0522D")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(d.subSaharan) })
+          )
+       svg.append("path")
+        .datum(data)
+        .attr("fill", "#A0522D")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.year) })
+          .y0( height )
+          .y1(function(d) {return y(d.subSaharan) })
+          )
+
    
   
    
