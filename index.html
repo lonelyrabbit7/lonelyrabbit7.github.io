@@ -1,11 +1,13 @@
 <html>
 <div id="my_dataviz" style="float:left">
-  <h1>Visualization 1: Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) - World </h1>
-  <h3>X-Axis: Year</h3>
-  <h3>Y-Axis: Poverty headcount ratio </h3>
+  <h1> Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) - World </h1>
+  <h3>For almost 25 years, the number of people living in extreme poverty — on less than $1.90 per person per day was steadily </h3>
+  <h3>declining. But the trend was interrupted in 2020, when poverty rose due to the disruption caused by the COVID-19 </h3>
+  <h3>crisis combined with the effects of conflict and climate change — which had already been slowing poverty reduction.</h3>
+  <h3>In many regions, there still exists serious poverty in food.</h3>
 </div>
-<button onclick="prevPage()">Prev</button>
-<button onclick="nextPage()">Next</button>
+
+ <button onclick="location.href = 'https://lonelyrabbit7.github.io/index3.html';" id="1Next">prev</button>
 <script src='https://d3js.org/d3.v4.min.js'></script>
 <style> 
 </style>
@@ -36,12 +38,12 @@
     svg.append("text")
         
         .attr("y",40)
-        .attr("x", 200)
+        .attr("x", 210)
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .attr("fill","red")
-        .attr("font-size",10)
-        .text("From 1989 year,Poverty headcount ratio decreases drmatically ");
+        .attr("font-size",15)
+        .text("Since 1989 year,Poverty headcount ratio decreases drmatically ");
       svg.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", -50)
