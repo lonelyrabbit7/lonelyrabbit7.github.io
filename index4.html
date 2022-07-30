@@ -32,7 +32,9 @@
 
     function(data) {
 
-     var x=d3.scalelinear().domain([1990,2015]) .range([ 0, width ]);
+       var x = d3.scaleLinear()
+        .domain([19890,2015])
+        .range([ 0, width ]);
 					
       var y = d3.scaleLinear()
         .domain( [0,1500] )
