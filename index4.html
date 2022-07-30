@@ -213,7 +213,7 @@ function(data) {
       .x(function(d) { return x2(d.year) })
       .y(function(d) { return y2(d.east) })
       )
-   });
+  
 svg2.append("path")
     .datum(data)
     .attr("fill", "#CD3700")
@@ -224,7 +224,7 @@ svg2.append("path")
       .y0( height )
       .y1(function(d) {return y2(d.east) }))
 	
-    });
+   });
 
 
 </script>
