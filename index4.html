@@ -1,131 +1,116 @@
+<!DOCTYPE html>
 <html>
-<div id="my_dataviz" style="float:left">
-  <h3>Visualization 5: 1999-2021 NICS Firearm Background Checks in the US, Monthly</h3>
-  <h3>X-Axis: Date</h3>
-  <h3>Y-Axis: Number of Firearm Background Checks</h3>
-</div>
-<div id="my_dataviz2" style="float:left">
-  <h3>Visualization 6: 1999-2021 US Real Disposable Income (DSPIC96), Monthly</h3>
-  <h3>X-Axis: Date</h3>
-  <h3>Y-Axis: Real Disposable Income (Billions of Chained 2012 Dollars, Seasonally Adjusted Annual Rate)</h3>
-</div>
-<button onclick="location.href = 'https://lonelyrabbit7.github.io/index3.html';" id="2Back">Back</button>
-<button onclick="location.href = 'https://lonelyrabbit7.github.io/index5.html';" id="2Back">Back</button>
-<script src='https://d3js.org/d3.v4.min.js'></script>
-<style> rect {fill: lightblue; stroke: black; }</style>
-<body>
-<svg width=1200 height=1000>
-</svg>
-<script>
-  var margin = {top: 100, right: 100, bottom: 100, left: 100},
-      width = 800 - margin.left - margin.right,
-      height = 800 - margin.top - margin.bottom;
-
-  var svg = d3.select("#my_dataviz")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")")
-
-  d3.csv("massaged_data/massaged-nics-firearm-background-checks.csv",
-
-    function(d){
-      return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
-    },
-
-    function(data) {
-
-      var x = d3.scaleTime()
-        .domain([new Date("1999-01-01"),new Date("2021-06-31")])
-        .range([ 0, width ]);
-      svg.append("g")
-        .attr("transform", "translate(0," + (height+5) + ")")
-        .call(d3.axisBottom(x).ticks(22).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")));
-
-      var y = d3.scaleLinear()
-        .domain( [200000,5000000] )
-        .range([ height, 0 ]);
-      svg.append("g")
-        .attr("transform", "translate(-5,0)")
-        .call(d3.axisLeft(y).tickSizeOuter(0));
-
-      svg.append("path")
-        .datum(data)
-        .attr("fill", "#69b3a2")
-        .attr("fill-opacity", .3)
-        .attr("stroke", "none")
-        .attr("d", d3.area()
-          .x(function(d) { return x(d.date) })
-          .y0( height )
-          .y1(function(d) { return y(d.value) })
-          )
-
-      svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "#69b3a2")
-        .attr("stroke-width", 4)
-        .attr("d", d3.line()
-          .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.value) })
-          )
-  });
-  
-  var svg2 = d3.select("#my_dataviz2")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")")
-
-  d3.csv("massaged_data/RDI-99-2021.csv",
-
-    function(d){
-      return { DATE : d3.timeParse("%Y-%m-%d")(d.DATE), DSPIC96 : d.DSPIC96 }
-    },
-
-    function(data) {
-
-      var x = d3.scaleTime()
-        .domain([new Date("1999-01-01"),new Date("2021-06-31")])
-        .range([ 0, width ]);
-      svg2.append("g")
-        .attr("transform", "translate(0," + (height+5) + ")")
-        .call(d3.axisBottom(x).ticks(22).tickSizeOuter(0).tickFormat(d3.timeFormat("%Y")));
-
-      var y2 = d3.scaleLinear()
-        .domain( [8000,20000] )
-        .range([ height, 0 ]);
-      svg2.append("g")
-        .attr("transform", "translate(-5,0)")
-        .call(d3.axisLeft(y2).tickSizeOuter(0));
-
-      svg2.append("path")
-        .datum(data)
-        .attr("fill", "blue")
-        .attr("fill-opacity", .3)
-        .attr("stroke", "none")
-        .attr("d", d3.area()
-          .x(function(d) { return x(d.DATE) })
-          .y0( height )
-          .y1(function(d) { return y2(d.DSPIC96) })
-          )
-
-      svg2.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "blue")
-        .attr("stroke-width", 4)
-        .attr("d", d3.line()
-          .x(function(d) { return x(d.DATE) })
-          .y(function(d) { return y2(d.DSPIC96) })
-          )
-    
-  });
-
-</script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="d3.js"></script>
+		<style>
+			.axis path,
+			.axis line{
+				shape-rendering: crispedges;
+				stroke: black;
+				fill: none;
+			}
+			.axis text{
+				font-family:sans-serif;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3 style="margin-left: 100px;">2018年2019年公司产品销量变化趋势</h3>
+		<script>
+		//2018年和2019年度各月份产品销售额数据
+		var data=[[176.71,77.28,312.23,58.60,
+					119.62,179.52,458.55,359.68,
+					114.46,188.93,178.30 ,254.05],
+					[437.77,153.76,347.83,190.85,
+					369.70,21.06,219.18,320.39,
+					481.47,106.88,298.88,482.32]];
+		//画布大小
+		var width=600;
+		var height=600;
+		var padding={top:10,bottom:100,left:100,right:100};
+		svg=d3.select("body").append("svg")
+				.attr("width",width)
+				.attr("height",height);
+		//总体产品销售额最大值
+		var max=d3.max([d3.max(data[0]),d3.max(data[1])]);
+		console.log(max);
+		//定义X轴和Y轴的比例尺
+		var xScale=d3.scale.linear()
+					.domain([1,12])
+					.range([0,width-padding.left-padding.right]);
+		var yScale=d3.scale.linear()
+					.domain([0,max+30])
+					.range([height-padding.top-padding.bottom,0]);
+		//创建直线生成器
+		var linePath=d3.svg.line()
+					.x(function(d,i){
+						return xScale(i+1);
+					})
+					.y(function(d,i){
+						return yScale(d);
+					})
+					.interpolate("basis");
+		//添加路径
+		svg.selectAll("path")
+			.data(data)
+			.enter()
+			.append("path")
+			.attr("transform","translate("+padding.left+","+padding.top+")")
+			.attr("d",function(d,i){return linePath(d);})
+			.attr("fill","none")
+			.attr("stroke-width",2)
+			.attr("stroke",function(d,i){
+				if(i==0){
+					return "blue";
+				}else{
+					return "yellow";
+				}
+			});
+		//x轴
+		var xAxis=d3.svg.axis()
+					.scale(xScale)
+					.tickValues(d3.range(1,13))
+					.orient("bottom");
+		//添加x轴
+		svg.append("g")
+			.attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
+			.attr("class","axis")
+			.call(xAxis);
+		//y轴
+		var yAxis=d3.svg.axis()
+					.scale(yScale)
+					.orient("left");
+		//添加y轴
+		svg.append("g")
+			.attr("transform","translate("+padding.left+","+padding.top+")")
+			.attr("class","axis")
+			.call(yAxis);
+		//添加标识
+		svg.append("rect")
+			.attr("x",150)
+			.attr("y",550)
+			.attr("width",20)
+			.attr("height",20)
+			.attr("fill","blue");
+		svg.append("text")
+			.attr("x",180)
+			.attr("y",568)
+			.attr("fill","black")
+			.text("2018年度");
+		svg.append("rect")
+			.attr("x",350)
+			.attr("y",550)
+			.attr("width",20)
+			.attr("height",20)
+			.attr("fill","yellow");	
+		svg.append("text")
+			.attr("x",380)
+			.attr("y",568)
+			.attr("fill","black")
+			.text("2019年度");
+		</script>
+	</body>
 </html>
