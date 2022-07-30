@@ -1,10 +1,11 @@
 <html>
 <div id="my_dataviz" style="float:left">
-  <h1> Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) - World </h1>
+  <h1>Visualization 1: Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) - World </h1>
   <h3>X-Axis: Year</h3>
   <h3>Y-Axis: Poverty headcount ratio </h3>
 </div>
- <button onclick="https://github.com/lonelyrabbit7/lonelyrabbit7.github.io/blob/main/index3.html';" id="1Next">Next</button>
+<button onclick="prevPage()">Prev</button>
+<button onclick="nextPage()">Next</button>
 <script src='https://d3js.org/d3.v4.min.js'></script>
 <style> 
 </style>
@@ -12,9 +13,10 @@
 <svg width=1200 height=1000>
 </svg>
 <script>
-  var margin = 100,
-      width = 1000,
-      height = 600;
+  var margin = {top: 100, right: 100, bottom: 100, left: 100},
+      width = 800 - margin.left - margin.right,
+      height =600- margin.top - margin.bottom;
+  
   var svg = d3.select("#my_dataviz")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -22,32 +24,7 @@
       .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
- 
-    svg.append("text")
-        
-        .attr("y",100)
-        .attr("x", 180)
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("From 1989 year,Poverty headcount ratio decrease drmatically ");
-   svg.append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", -50)
-        .attr("x", -190)
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Poverty headcount ratio at $1.90 a day ");
-     
-   svg.append("text")
-      .attr("transform",
-          "translate(" + (width / 2 + margin) + " ," + (margin + height + 20) + ")")
-        .attr("y",420)
-        .attr("x", 260)
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Year");
 
-  
   d3.csv("massaged_data/1.csv",
 
     function(d){
@@ -55,6 +32,30 @@
     },
 
     function(data) {
+
+    svg.append("text")
+        
+        .attr("y",100)
+        .attr("x", 180)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("From 1989 year,Poverty headcount ratio decrease ");
+      svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", -190)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Poverty headcount ratio at $1.90 a day ");
+     
+      svg.append("text")
+      .attr("transform",
+          "translate(" + (width / 2 + margin) + " ," + (margin + height + 20) + ")")
+        .attr("y",420)
+        .attr("x", 260)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Year");
 
       var x = d3.scaleLinear()
         .domain([1980,2020])
