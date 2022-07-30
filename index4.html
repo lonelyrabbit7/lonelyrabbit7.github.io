@@ -155,6 +155,12 @@
         .style("border-width", "1px")
         .style("border-radius", "5px")
         .style("padding", "10px");  
+d3.select('#my_dataviz').append("circle").attr("cx", 300).attr("cy", 200).attr("r", 3).style("fill", "#CD661D");
+d3.select('#my_dataviz').append("text").attr("x", 320).attr("y", 200).text("sub-Saharan").style("font-size", "15px").attr("alignment-baseline", "middle")
+d3.select('#my_dataviz').append("circle").attr("cx", 300).attr("cy", 220).attr("r", 3).style("fill", "#FF7F50");
+d3.select('#my_dataviz').append("text").attr("x", 320).attr("y", 220).text("african").style("font-size", "15px").attr("alignment-baseline", "middle")
+d3.select('#my_dataviz').append("circle").attr("cx", 300).attr("cy", 240).attr("r", 3).style("fill", "#D3D3D3");
+d3.select('#my_dataviz').append("text").attr("x", 320).attr("y", 240).text("other region").style("font-size", "15px").attr("alignment-baseline", "middle")
   });
 
 
