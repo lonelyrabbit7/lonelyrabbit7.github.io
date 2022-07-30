@@ -7,6 +7,17 @@
   <h3> Regional trends in food poverty: </h4>
   <h5> Since 1990, the number of people living in food poverty has increased by almost 20% in Middle East and North </h5>
   <h5> North Africa, and over 25% in sub-Saharan Africa. These regions now represent 62% of all  people in food poverty</h6>
+  <h3> Figure 1: </h3>
+  <h5> The number of people living in food poverty in the regions of sub-Saharan Africa and Middle East and North Africa </h5>
+  <h5> has increased from 225 million in 1990 to 284 million in 2015</h5>
+ 
+</div>
+<div id="my_dataviz2" style="float:left">
+  
+  <h3> Figure 2: </h3>
+  <h5> The global share of people living in food poverty in East Asia and Pacific has decreased from 50% in 1990 to less than 10% in 2015</h5>
+  <h5> than 10% in 2015</h5>
+ 
 </div>
 <button onclick="location.href = 'https://lonelyrabbit7.github.io/index2.html';" id="1Next">Next</button>
 <script src='https://d3js.org/d3.v4.min.js'></script>
@@ -17,8 +28,8 @@
 </svg>
 <script>
   var margin = {top: 100, right: 100, bottom: 100, left: 100},
-      width = 1200 - margin.left - margin.right,
-      height = 800 - margin.top - margin.bottom;
+      width = 800 - margin.left - margin.right,
+      height = 600 - margin.top - margin.bottom;
 
   var svg = d3.select("#my_dataviz")
     .append("svg")
@@ -43,29 +54,6 @@
       var y = d3.scaleLinear()
         .domain( [0,1500] )
         .range([ height, 0 ]);				
-    
-		//创建直线生成器
-//       var linePath1=d3.svg.line().x(function(d){
-// 						return x(d.year);
-// 					})
-// 				.y(function(d,i){
-// 						return y(d.subSaharan);
-// 					})
-// 				.interpolate("basis");
-//       var linePath2=d3.svg.line().x(function(d){
-// 						return x(d.year);
-// 					})
-// 				.y(function(d,i){
-// 						return y(d.african);
-// 					})
-// 				.interpolate("basis");
-//     var linePath3=d3.svg.line().x(function(d){
-// 						return x(d.year);
-// 					})
-// 				.y(function(d,i){
-// 						return y(d.other);
-// 					})
-// 				.interpolate("basis");
 
       svg.append("g")
         .attr("transform", "translate(0," + (height) + ")")
@@ -87,6 +75,10 @@
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.other) })
           )
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("region: " + d.other);
+          })
+        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 	svg.append("path")
         .datum(data)
         .attr("fill", "#D3D3D3")
@@ -106,6 +98,10 @@
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.african) })
           )
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("region: " + d.african);
+          })
+        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 	svg.append("path")
         .datum(data)
         .attr("fill", "#FF7F50")
@@ -125,6 +121,11 @@
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.subSaharan) })
           )
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("region: " + d.subSaharan);
+          })
+        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+       
        svg.append("path")
         .datum(data)
         .attr("fill", "#A0522D")
@@ -136,11 +137,59 @@
           .y1(function(d) {return y(d.subSaharan) })
           )
 
-   
-  
-   
 
-  });
+          // create a tooltip
+    var tooltip = d3.select("#my_dataviz")
+      .append("div")
+        .style("position", "absolute")
+        .style("visibility", "visible")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");  });
+d3.csv("massaged_data/3.csv",
+
+function(d){
+  return { east:d.east , year : d.year}
+},
+
+function(data){
+    var svg2 = d3.select("#my_dataviz2")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")")
+   
+     svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#A0522D")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(d.east) })
+          )
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("region: " + d.east);
+          })
+        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+        svg.append("path")
+        .datum(data)
+        .attr("fill", "#A0522D")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x(d.year) })
+          .y0( height )
+          .y1(function(d) {return y(d.east) })
+          )
+      
+   });
+
+
 </script>
 </body>
 </html>
