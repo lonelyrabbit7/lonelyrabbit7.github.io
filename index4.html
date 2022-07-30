@@ -33,7 +33,7 @@
     function(data) {
 
        var x = d3.scaleLinear()
-        .domain([19890,2015])
+        .domain([1990,2015])
         .range([ 0, width ]);
 					
       var y = d3.scaleLinear()
@@ -86,7 +86,7 @@
 	 svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#00BFFF")
+        .attr("stroke", "#55BFFF")
         .attr("stroke-width", 4)
         .attr("d", d3.line()
           .x(function(d) { return x(d.year) })
