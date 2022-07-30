@@ -1,6 +1,6 @@
 <html>
 <div id="my_dataviz" style="float:left">
-  <h1>Visualization 1: Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) - World </h1>
+  <h1> Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population) - World </h1>
   <h3>X-Axis: Year</h3>
   <h3>Y-Axis: Poverty headcount ratio </h3>
 </div>
@@ -17,13 +17,23 @@
       width = 1000,
       height = 600;
   
-  var svg = d3.select("#my_dataviz")
-    .append("svg")
-      .attr("width", width + margin + margin)
-      .attr("height", height + margin + margin)
-      .append("g")
+ 
+   svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", -190)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Poverty headcount ratio at $1.90 a day ");
+     
+   svg.append("text")
       .attr("transform",
-            "translate(" + margin + "," + margin + ")")
+          "translate(" + (width / 2 + margin) + " ," + (margin + height + 20) + ")")
+        .attr("y",420)
+        .attr("x", 260)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Year");
 
   d3.select('#my_dataviz').append("text")
         .attr("transform", "rotate(-90)")
