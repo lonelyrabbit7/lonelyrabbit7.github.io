@@ -81,7 +81,7 @@
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.other) })
           )
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In subSaharan, the number of people living in food poverty : " + d.other);
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In other region, the number of people living in food poverty : " + d.other);
           })
         .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
@@ -104,7 +104,7 @@
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.african) })
           )
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In subSaharan, the number of people living in food poverty : "  + d.african);
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In Middle East and North Africa, the number of people living in food poverty : "  + d.african);
           })
         .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
@@ -128,7 +128,7 @@
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.subSaharan) })
           )
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In subSaharan, the number of people living in food poverty : " + d.subSaharan);
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In sub-Saharan , the number of people living in food poverty : " + d.subSaharan);
           })
         .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
@@ -175,6 +175,15 @@ function(data) {
   var y2 = d3.scaleLinear()
     .domain( [0,1500] )
     .range([ height, 0 ]);				
+  var tooltip2 = d3.select("#my_dataviz2")
+      .append("div")
+        .style("position", "absolute")
+        .style("visibility", "visible")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");  
 
   svg2.append("g")
         .attr("transform", "translate(0," + (height) + ")")
@@ -183,6 +192,28 @@ function(data) {
   svg2.append("g")
         .attr("transform", "translate(0,0)")
         .call(d3.axisLeft(y2).tickSizeOuter(0))
+  svg2.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#D3D3D3")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x2(d.year) })
+          .y(function(d) { return y2(d.other) })
+          )
+        .on("mouseover", function(d){return tooltip2.style("visibility", "visible").text("In other region, the number of people living in food poverty : " + d.other);
+          })
+        .on("mousemove", function(){return tooltip2.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
+        .on("mouseout", function(){return tooltip2.style("visibility", "hidden");});
+	svg2.append("path")
+        .datum(data)
+        .attr("fill", "#D3D3D3")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x2(d.year) })
+          .y0( height )
+          .y1(function(d) {return y2(d.other) }))
 
   svg2.append("path")
     .datum(data)
@@ -193,10 +224,10 @@ function(data) {
       .x(function(d) { return x2(d.year) })
       .y(function(d) { return y2(d.east) })
       )
-    .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("region: " + d.east);
+    .on("mouseover", function(d){return tooltip2.style("visibility", "visible").text("In East Asia and Pacific region: " + d.east);
       })
-    .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
-    .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+    .on("mousemove", function(){return tooltip2.style("left", (d3.mouse(this)[0]-40) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
+    .on("mouseout", function(){return tooltip2.style("visibility", "hidden");});
 svg2.append("path")
     .datum(data)
     .attr("fill", "#D3D3D3")
