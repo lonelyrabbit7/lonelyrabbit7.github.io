@@ -114,7 +114,7 @@
         .attr("d", d3.area()
           .x(function(d) { return x(d.year) })
           .y0( height )
-          .y1(function(d) {return y(d.subSaharan) })
+          .y1(function(d) {return y(d.african) })
           )
      svg.append("path")
         .datum(data)
