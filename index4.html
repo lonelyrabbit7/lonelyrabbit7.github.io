@@ -27,25 +27,25 @@
 <svg width=1200 height=1000>
 </svg>
 <script>
-  var margin = {top: 100, right: 100, bottom: 100, left: 100},
-      width = 800 - margin.left - margin.right,
-      height = 600 - margin.top - margin.bottom;
+var width =600;
+var height = 800;
+var margin =100;
 
   var svg1 = d3.select("#my_dataviz")
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
       .append("g")
       .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")")
+            "translate(" + margin + "," + margin + ")")
     
-  var svg2 = d3.select("#my_dataviz2")
+ var svg2 = d3.select("#my_dataviz2")
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
       .append("g")
       .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")")
+            "translate(" + margin + "," + margin + ")")
 
 
   d3.csv("massaged_data/poverty.csv",
@@ -80,11 +80,8 @@
         .attr("d", d3.line()
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.other) })
-          )
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In other region, the number of people living in food poverty : " + d.other);
-          })
-        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
-        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+          );
+     
 	svg1.append("path")
         .datum(data)
         .attr("fill", "#D3D3D3")
@@ -103,12 +100,7 @@
         .attr("d", d3.line()
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.african) })
-          )
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In Middle East and North Africa, the number of people living in food poverty : "  + d.african);
-          })
-        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
-        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
- 
+          );
 	svg1.append("path")
         .datum(data)
         .attr("fill", "#FF7F50")
@@ -127,11 +119,7 @@
         .attr("d", d3.line()
           .x(function(d) { return x(d.year) })
           .y(function(d) { return y(d.subSaharan) })
-          )
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("In sub-Saharan , the number of people living in food poverty : " + d.subSaharan);
-          })
-        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
-        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+          );
 	svg1.append("path")
         .datum(data)
         .attr("fill", "#CD661D")
