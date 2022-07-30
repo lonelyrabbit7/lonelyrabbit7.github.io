@@ -216,7 +216,7 @@ function(data) {
   svg2.append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", "#D3D3D3")
+    .attr("stroke", "#CD3700")
     .attr("stroke-width", 4)
     .attr("d", d3.line()
       .x(function(d) { return x2(d.year) })
@@ -228,7 +228,7 @@ function(data) {
     .on("mouseout", function(){return tooltip2.style("visibility", "hidden");});
 svg2.append("path")
     .datum(data)
-    .attr("fill", "#D3D3D3")
+    .attr("fill", "#CD3700")
     .attr("fill-opacity", .3)
     .attr("stroke", "none")
     .attr("d", d3.area()
