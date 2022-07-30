@@ -46,7 +46,23 @@
       svg.append("g")
         .attr("transform", "translate(0,0)")
         .call(d3.axisLeft(y).tickSizeOuter(0))
-  
+    
+        svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", -290)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("share of population unable to afford a healthy diet ");
+     
+      svg.append("text")
+      .attr("transform",
+          "translate(" + (width / 2 + margin) + " ," + (margin + height + 20) + ")")
+        .attr("y",620)
+        .attr("x", 420)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("cost of a healthy diet(current PPP$)");
 
           
     svg.selectAll("circle")
