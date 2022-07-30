@@ -31,13 +31,22 @@
       width = 800 - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom;
 
-  var svg = d3.select("#my_dataviz")
+  var svg1 = d3.select("#my_dataviz")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
+    
+  var svg2 = d3.select("#my_dataviz2")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")")
+
 
   d3.csv("massaged_data/poverty.csv",
 
@@ -55,18 +64,15 @@
         .domain( [0,1500] )
         .range([ height, 0 ]);				
 
-      svg.append("g")
+      svg1.append("g")
         .attr("transform", "translate(0," + (height) + ")")
         .call(d3.axisBottom(x).tickSizeOuter(20))
-
      
-      svg.append("g")
+      svg1.append("g")
         .attr("transform", "translate(0,0)")
         .call(d3.axisLeft(y).tickSizeOuter(0))
 
-    
-
-      svg.append("path")
+      svg1.append("path")
         .datum(data)
         .attr("fill", "none")
         .attr("stroke", "#D3D3D3")
@@ -79,7 +85,7 @@
           })
         .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
-	svg.append("path")
+	svg1.append("path")
         .datum(data)
         .attr("fill", "#D3D3D3")
         .attr("fill-opacity", .3)
@@ -89,7 +95,7 @@
           .y0( height )
           .y1(function(d) {return y(d.other) })
           )
-        svg.append("path")
+    svg1.append("path")
         .datum(data)
         .attr("fill", "none")
         .attr("stroke","#FF7F50")
@@ -102,7 +108,7 @@
           })
         .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
-	svg.append("path")
+	svg1.append("path")
         .datum(data)
         .attr("fill", "#FF7F50")
         .attr("fill-opacity", .3)
@@ -147,47 +153,66 @@
         .style("border", "solid")
         .style("border-width", "1px")
         .style("border-radius", "5px")
-        .style("padding", "10px");  });
-d3.csv("massaged_data/3.csv",
+        .style("padding", "10px");  
+  });
+
+
+d3.csv("massaged_data/poverty.csv",
 
 function(d){
-  return { east:d.east , year : d.year}
+  return { east:d.east }
 },
 
-function(data){
-    var svg2 = d3.select("#my_dataviz2")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")")
-   
-     svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "#A0522D")
-        .attr("stroke-width", 4)
-        .attr("d", d3.line()
-          .x(function(d) { return x(d.year) })
-          .y(function(d) { return y(d.east) })
-          )
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("region: " + d.east);
-          })
-        .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
-        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
-        svg.append("path")
-        .datum(data)
-        .attr("fill", "#A0522D")
-        .attr("fill-opacity", .3)
-        .attr("stroke", "none")
-        .attr("d", d3.area()
-          .x(function(d) { return x(d.year) })
-          .y0( height )
-          .y1(function(d) {return y(d.east) })
-          )
+function(data) {
+
+   var x2 = d3.scaleLinear()
+    .domain([1990,2015])
+    .range([ 0, width ]);
       
-   });
+  var y2 = d3.scaleLinear()
+    .domain( [0,1500] )
+    .range([ height, 0 ]);				
+
+  svg2.append("g")
+        .attr("transform", "translate(0," + (height) + ")")
+        .call(d3.axisBottom(x2).tickSizeOuter(20))
+     
+  svg2.append("g")
+        .attr("transform", "translate(0,0)")
+        .call(d3.axisLeft(y2).tickSizeOuter(0))
+
+  svg2.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "#D3D3D3")
+    .attr("stroke-width", 4)
+    .attr("d", d3.line()
+      .x(function(d) { return x2(d.year) })
+      .y(function(d) { return y2(d.east) })
+      )
+    .on("mouseover", function(d){return tooltip.style("visibility", "visible").text("region: " + d.east);
+      })
+    .on("mousemove", function(){return tooltip.style("left", (d3.mouse(this)[0]) + "px").style("top", (d3.mouse(this)[1]+30) + "px");})
+    .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+svg2.append("path")
+    .datum(data)
+    .attr("fill", "#D3D3D3")
+    .attr("fill-opacity", .3)
+    .attr("stroke", "none")
+    .attr("d", d3.area()
+      .x(function(d) { return x(d.year) })
+      .y0( height )
+      .y1(function(d) {return y(d.east) }))
+  // var tooltip = d3.select("#my_dataviz")
+  //     .append("div")
+  //       .style("position", "absolute")
+  //       .style("visibility", "visible")
+  //       .style("background-color", "white")
+  //       .style("border", "solid")
+  //       .style("border-width", "1px")
+  //       .style("border-radius", "5px")
+  //       .style("padding", "10px");  
+    });
 
 
 </script>
