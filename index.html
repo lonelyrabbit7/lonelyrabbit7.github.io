@@ -16,7 +16,13 @@
   var margin = 100,
       width = 1000,
       height = 600;
-  
+  var svg = d3.select("#my_dataviz")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")")
  
    svg.append("text")
         .attr("transform", "rotate(-90)")
@@ -35,13 +41,6 @@
         .style("text-anchor", "middle")
         .text("Year");
 
-  d3.select('#my_dataviz').append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 50)
-        .attr("x", 0 + (height / 2 + margin))
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Average Highway MPG");
   
   d3.csv("massaged_data/1.csv",
 
