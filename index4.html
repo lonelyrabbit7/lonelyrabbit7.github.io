@@ -135,7 +135,7 @@
 	svg1.append("path")
         .datum(data)
         .attr("fill", "#CD661D")
-        .attr("fill-opacity", .3)
+        .attr("fill-opacity", 1)
         .attr("stroke", "none")
         .attr("d", d3.area()
           .x(function(d) { return x(d.year) })
@@ -161,7 +161,7 @@
 d3.csv("massaged_data/poverty.csv",
 
 function(d){
-  return { east:d.east }
+  return { east:d.east ,year:d.year,other,:d.other}
 },
 
 function(data) {
