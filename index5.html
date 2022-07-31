@@ -6,6 +6,7 @@
     <svg width=800 height=600 id="viz1" style="display:inline-block"></svg>
     <p style="display:inline-block; vertical-align: top;" id="intro"></p>
     <div id="button_cont">
+      <button onclick="swit()"id="bt1">switch</button>
       <button onclick="prev()">Prev</button>
       <span id="page_id"></span>
       <button onclick="next()">Next</button>
@@ -20,13 +21,15 @@
 
 <script>
   var page_id=1;
-
+  var s=1;
 function GoPage1(){ 
+  d3.select('#bt1').style("visibility", "hidden")
   var margin = {top: 100, right: 100, bottom: 100, left: 100},
       width = 600,
       height =400;
 
   d3.select('#page').text(`${page_id}/3`)
+ 
   var svg = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -34,7 +37,7 @@ function GoPage1(){
       .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
-       svg.append("circle")
+  svg.append("circle")
    
     .attr("fill", "#FFF68F")
     .attr("stroke", "yellow")
@@ -157,6 +160,7 @@ function GoPage1(){
 
 }
 function GoPage3(){
+
   var color=['pink','#CDCDB4','#FFD700','#EEB4B4','#CD5555']
   var margin = 100,
       width = 600,
@@ -170,6 +174,7 @@ function GoPage3(){
       .append("g")
       .attr("transform",
             "translate(" + margin + "," + margin + ")")
+ d3.select('#bt1').style("visibility", "hidden")
 svg.append("circle")
    .attr("fill", '#CDCDB4')
    .attr("cy",75)
@@ -299,9 +304,11 @@ svg.append("circle")
   });
 }
   function GoPage2(){
+    
     var width =600;
 var height = 400;
 var margin =100;
+d3.select('#bt1').style("visibility", "visible")
 d3.select('#intro')
         .html( `
         <strong>global trends in food poverty:</strong><br>
@@ -317,6 +324,129 @@ d3.select('#intro')
       `)
 
  d3.select('#page').text(`Page ${page_id}/3`)
+ if(s==1){
+  part1();
+ }else{
+  part0();
+ }
+ function part1(){
+  var svg2 = d3.select("#viz1")
+    .append("svg")
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
+      .append("g")
+      .attr("transform",
+            "translate(" + margin + "," + margin + ")")
+  svg2.append("circle")
+   .attr("fill", "#D3D3D3")
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
+  svg2.append("text")
+        .attr("y",65)
+        .attr("x", 570)
+        .attr("fill", "#D3D3D3")
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("other region ");
+   svg2.append("circle")
+   .attr("fill", "#CD3700")
+   .attr("cy",95)
+   .attr("cx",528)
+   .attr("r",7)
+   svg2.append("text")
+   .attr("fill", "#CD3700")
+        .attr("y",85)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text(" East Asia and Pacific ");
+d3.csv("massaged_data/poverty.csv",
+
+function(d){
+  return { east:d.east ,year:d.year,other:d.other}
+},
+
+function(data) {
+
+   var x2 = d3.scaleLinear()
+    .domain([1990,2015])
+    .range([ 0, width ]);
+      
+  var y2 = d3.scaleLinear()
+    .domain( [0,1500] )
+    .range([ height, 0 ]);				
+  var tooltip2 = d3.select("#viz2")
+      .append("div")
+        .style("position", "absolute")
+        .style("visibility", "visible")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");  
+   svg2.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -70)
+        .attr("x", -250)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("number of people in food poverty(millions) ");
+    svg2.append("text")  
+     .attr("y",420)
+     .attr("x", 260)
+     .attr("dy", "1em")
+     .style("text-anchor", "middle")
+     .text("Year");
+  svg2.append("g")
+        .attr("transform", "translate(0," + (height) + ")")
+        .call(d3.axisBottom(x2).tickSizeOuter(20))
+     
+  svg2.append("g")
+        .attr("transform", "translate(0,0)")
+        .call(d3.axisLeft(y2).tickSizeOuter(0))
+  svg2.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#D3D3D3")
+        .attr("stroke-width", 4)
+        .attr("d", d3.line()
+          .x(function(d) { return x2(d.year) })
+          .y(function(d) { return y2(d.other) })
+          );
+	svg2.append("path")
+        .datum(data)
+        .attr("fill", "#D3D3D3")
+        .attr("fill-opacity", .3)
+        .attr("stroke", "none")
+        .attr("d", d3.area()
+          .x(function(d) { return x2(d.year) })
+          .y0( height )
+          .y1(function(d) {return y2(d.other) }))
+
+  svg2.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "#CD3700")
+    .attr("stroke-width", 4)
+    .attr("d", d3.line()
+      .x(function(d) { return x2(d.year) })
+      .y(function(d) { return y2(d.east) })
+      )
+  
+svg2.append("path")
+    .datum(data)
+    .attr("fill", "#CD3700")
+    .attr("fill-opacity", 1)
+    .attr("stroke", "none")
+    .attr("d", d3.area()
+      .x(function(d) { return x2(d.year) })
+      .y0( height )
+      .y1(function(d) {return y2(d.east) }))
+	
+   });
+ }
+ function part0(){
   var svg1 = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
@@ -477,6 +607,8 @@ d3.select('#intro')
 
   });
 
+ }
+ 
   }
 
 function prev(){
@@ -497,17 +629,38 @@ function next(){
   
   }
 }
+
 function Go(){
   if (page_id==1){
+    
     GoPage1(); 
   }
   if (page_id==2){
+    d3.select('#bt1').style("visibility", "visiable");
     GoPage2(); 
   }
+  
   if (page_id==3){
+   
     GoPage3(); 
   }
+
+
 }
+function swit(){
+  if(page_id==1){return ;}
+  if(page_id==3){return ;}
+  if(s==0){
+      s=1;
+      d3.select('#viz1').html("");
+      GoPage2(); 
+  }else{
+    s=0;
+    d3.select('#viz1').html("");
+    GoPage2(); 
+  }
+}
+
 GoPage1(); 
   
 </script>
