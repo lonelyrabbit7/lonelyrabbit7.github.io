@@ -13,17 +13,17 @@
 <svg width=1200 height=1000>
 </svg>
 <script>
-  var margin = {top: 100, right: 100, bottom: 100, left: 100},
+  var margin = 100,
       width = 600,
       height = 400;
 
   var svg = d3.select("#my_dataviz")
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
       .append("g")
       .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")")
+            "translate(" + margin + "," + margin + ")")
 
   d3.csv("massaged_data/cost.csv",
 
