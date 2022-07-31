@@ -5,7 +5,7 @@
     <svg width=800 height=600 id="viz1" style="display:inline-block"></svg>
     <p style="display:inline-block; vertical-align: top;" id="intro"></p>
     <div id="button_cont">
-      <button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">prev</button>
+      <button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Next</button>
       <span id="page"></span>
     </div>
 </div>
@@ -28,7 +28,7 @@
       .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
-
+   
   d3.csv("massaged_data/1.csv",
 
     function(d){
@@ -124,8 +124,16 @@
    
     
   });  
-    let p = ` For almost 25 years, the number of people living in <br>
-  
+    let p = `
+    For almost 25 years, the number of people living in 
+    extreme poverty — on less than $1.90 per person per  <br>
+    day was steadily declining. But the trend was 
+    interrupted in 2020, when poverty rose due to the 
+    disruption caused by the COVID-19 crisis combined 
+    with the effects of conflict and climate change 
+    — which had already been slowing povertyreduction.
+    In many regions, there still exists serious poverty
+     in food.<br>
       `
       d3.select('#intro')
         .html(p)
