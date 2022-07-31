@@ -74,8 +74,8 @@ var page_id=3;
       d3.select('#page').text(`Page ${page_id}/3`)
       svg1.append("text")
      
-        .attr("y",720)
-        .attr("x", 320)
+        .attr("y",420)
+        .attr("x", 260)
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("Year");
@@ -194,13 +194,12 @@ function(data) {
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("number of people in food poverty(millions) ");
-     
-    svg2.append("text")
-        .attr("y",620)
-        .attr("x", 320)
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Year");
+    svg2.append("text")  
+     .attr("y",420)
+     .attr("x", 260)
+     .attr("dy", "1em")
+     .style("text-anchor", "middle")
+     .text("Year");
   svg2.append("g")
         .attr("transform", "translate(0," + (height) + ")")
         .call(d3.axisBottom(x2).tickSizeOuter(20))
@@ -240,7 +239,7 @@ function(data) {
 svg2.append("path")
     .datum(data)
     .attr("fill", "#CD3700")
-    .attr("fill-opacity", .3)
+    .attr("fill-opacity", 1)
     .attr("stroke", "none")
     .attr("d", d3.area()
       .x(function(d) { return x2(d.year) })
