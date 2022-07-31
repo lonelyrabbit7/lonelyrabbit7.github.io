@@ -31,7 +31,7 @@
 var width =600;
 var height = 400;
 var margin =100;
- 
+var page_id=2;
   var svg1 = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
@@ -71,7 +71,7 @@ var margin =100;
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("number of people in food poverty(millions) ");
-      d3.select('#page').text(`Page 3 / 3`)
+      d3.select('#page').text(`Page ${page_id}/3`)
       svg1.append("text")
      
         .attr("y",720)
