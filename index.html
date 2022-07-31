@@ -2,11 +2,14 @@
 
 <div>
   <h2>Poverty headcount ratio at $1.90 a day -World</h2>
+  <div id="cont">
     <svg width=800 height=600 id="viz1" style="display:inline-block"></svg>
     <p style="display:inline-block; vertical-align: top;" id="intro"></p>
     <div id="button_cont">
-      <button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Next</button>
+      <button onclick="location.href = 'https://lonelyrabbit7.github.io/index3.html';" id="1Next">prev</button>
       <span id="page"></span>
+ <button onclick="location.href = 'https://lonelyrabbit7.github.io/index3.html';" id="1Next">Next</button>
+      </div>
     </div>
 </div>
 
@@ -28,13 +31,13 @@
       .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
-  svg.append("circle")
+       svg.append("circle")
    
     .attr("fill", "#FFF68F")
     .attr("stroke", "yellow")
-    .attr("cy",75)
-    .attr("cx",128)
-    .attr("r",10)
+    .attr("cy",65)
+    .attr("cx",138)
+    .attr("r",7)
   d3.csv("massaged_data/1.csv",
 
     function(d){
@@ -42,6 +45,8 @@
     },
 
     function(data) {
+
+
 
     svg.append("text")
         
@@ -102,7 +107,7 @@
           .y(function(d) { return y(d.value) })
           )
     
-       svg.selectAll("myCircles")
+      svg.selectAll("myCircles")
         .data(data)
         .enter()
         .append("circle")
@@ -116,7 +121,7 @@
           .on("mousemove", function(){return tooltip.style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY+10) + "px");})
           .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     // create a tooltip
-    var tooltip = d3.select("#viz1")
+    var tooltip = d3.select("#cont")
       .append("div")
         .style("position", "absolute")
         .style("visibility", "visible")
@@ -131,15 +136,15 @@
     
   });  
     let p = `
-    For almost 25 years, the number of people living in<br>
-    extreme poverty — on less than $1.90 per person per<br>
-    day was steadily declining. But the trend was<br>
-    interrupted in 2020, when poverty rose due to the<br>
-    disruption caused by the COVID-19 crisis combined<br>
-    with the effects of conflict and climate change <br>
-    — which had already been slowing povertyreduction.<br>
-    In many regions, there still exists serious poverty<br>
-    in food.<br>
+    For almost 25 years, the number of people living in 
+    extreme poverty — on less than $1.90 per person per  <br>
+    day was steadily declining. But the trend was 
+    interrupted in 2020, when poverty rose due to the 
+    disruption caused by the COVID-19 crisis combined 
+    with the effects of conflict and climate change 
+    — which had already been slowing povertyreduction.
+    In many regions, there still exists serious poverty
+     in food.<br>
       `
       d3.select('#intro')
         .html(p)
