@@ -2,7 +2,7 @@
 
 <div>
   <h2>Poverty headcount ratio at $1.90 a day -World</h2>
-  <div id="cont">
+  <div id="content">
     <svg width=800 height=600 id="viz1" style="display:inline-block"></svg>
     <p style="display:inline-block; vertical-align: top;" id="intro"></p>
     <div id="button_cont">
@@ -121,8 +121,9 @@
           .on("mousemove", function(){return tooltip.style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY+10) + "px");})
           .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     // create a tooltip
-    var tooltip = d3.select("#cont")
+    var tooltip = d3.select("#content")
       .append("div")
+        .attr("class", "tooltip")
         .style("position", "absolute")
         .style("visibility", "visible")
         .style("background-color", "white")
@@ -131,7 +132,7 @@
         .style("border-radius", "1px")
         .style("padding", "1px");
     
-    
+   
    
     
   });  
