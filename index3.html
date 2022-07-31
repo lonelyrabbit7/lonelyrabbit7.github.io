@@ -21,7 +21,7 @@
 <svg width=1200 height=1000>
 </svg>
 <script>
-  var color=['pink','lightyellow','lightgreen','lightcyan','lightblue']
+    var color=['pink','#CDCDB4','#FFD700','#EEB4B4','#CD5555']
   var margin = 100,
       width = 600,
       height = 400;
@@ -34,7 +34,58 @@
       .append("g")
       .attr("transform",
             "translate(" + margin + "," + margin + ")")
+svg.append("circle")
+   .attr("fill", '#CDCDB4')
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
+  svg.append("text")
+        .attr("y",65)
+        .attr("x", 570)
+        .attr("fill", '#CDCDB4')
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("High income ");
+   svg.append("circle")
+   .attr("fill", '#FFD700')
+   .attr("cy",95)
+   .attr("cx",528)
+   .attr("r",7)
+  
+   svg.append("text")
+   .attr("fill", '#FFD700')
+        .attr("y",85)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Upper middle income ");
 
+  svg.append("circle")
+   .attr("fill", '#EEB4B4')
+   .attr("cy",115)
+   .attr("cx",528)
+   .attr("r",7)
+ 
+   svg.append("text")
+        .attr("y",105)
+        .attr("x", 570)
+        .attr("fill",  '#EEB4B4')
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Lower middle income");
+   svg.append("circle")
+   .attr("fill", '#CD5555')
+   .attr("cy",135)
+   .attr("cx",528)
+   .attr("r",7)
+   svg.append("text")
+   .attr("fill", '#CD5555')
+        .attr("y",125)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Low income ");
+  
   d3.csv("massaged_data/cost.csv",
 
     function(d){
