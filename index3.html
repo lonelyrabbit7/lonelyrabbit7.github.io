@@ -1,12 +1,25 @@
 <html>
-<div id="viz1" style="float:left">
+<!-- <div id="viz1" style="float:left">
   <h3> Cost of a healthy diet and population unable to afford diet: 2020 </h3>
   <h4>Bubble size scaled by number of people unable to afford a healthy diet</h4>
   <h5> Hover over country bubbles to see data. </h5>
-</div>
- <button onclick="location.href = 'https://lonelyrabbit7.github.io/index.html';" id="1Next">prev</button>
+</div> -->
+ <!-- <button onclick="location.href = 'https://lonelyrabbit7.github.io/index.html';" id="1Next">prev</button>
     <span id="page"></span>
-<button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Next</button>
+<button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Next</button> -->
+
+<div>
+  <h2> Cost of a healthy diet and population unable to afford diet: 2020</h2>
+  <h5>Bubble size scaled by number of people unable to afford a healthy diet</h5>
+  <h5> Hover over country bubbles to see data. </h5>
+    <svg width=800 height=600 id="viz1" style="display:inline-block"></svg>
+    <p style="display:inline-block; vertical-align: top;" id="intro"></p>
+    <div id="button_cont">
+      <button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Prev</button>
+      <span id="page"></span>
+    </div>
+</div>
+
 <script src='https://d3js.org/d3.v4.min.js'></script>
 <style> 
 </style>
@@ -17,7 +30,8 @@
   var margin = 100,
       width = 600,
       height = 400;
- var page_id=2;
+ var page_id=3;
+ d3.select('#page').text(`Page ${page_id}/3`)
   var svg = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
@@ -25,11 +39,11 @@
       .append("g")
       .attr("transform",
             "translate(" + margin + "," + margin + ")")
- var color = ['pink','lightyellow','lightgreen','lightcyan'];
+
   d3.csv("massaged_data/cost.csv",
 
     function(d){
-      return { cost: d.cost,  Percent: d.Percent,population:d.population,country:d.country, Income:d.Income}
+      return { cost: d.cost,  Percent: d.Percent,population:d.population,country:d.country }
     },
 
     function(data) {
@@ -69,7 +83,7 @@
         .data(data).enter()
        
         .append("circle")
-        .attr("fill", function(d){return color[d.Income];})
+        .attr("fill", "#00BFFF")
         .attr("stroke", "grey")
         .attr("cx", function(d) { return x(d.cost)})
         .attr("cy", function(d) { return y(d.Percent)})
@@ -85,7 +99,7 @@
        
     
 
-    d3.select('#page').text(`Page ${page_id}/3`)
+   
     
     // create a tooltip
     var tooltip = d3.select("#viz1")
