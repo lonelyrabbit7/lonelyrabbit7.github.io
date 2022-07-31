@@ -5,6 +5,7 @@
   <h5> Hover over country bubbles to see data. </h5>
 </div>
  <button onclick="location.href = 'https://lonelyrabbit7.github.io/index.html';" id="1Next">prev</button>
+    <span id="page"></span>
 <button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Next</button>
 <script src='https://d3js.org/d3.v4.min.js'></script>
 <style> 
@@ -16,7 +17,7 @@
   var margin = 100,
       width = 600,
       height = 400;
-
+ var page_id=2;
   var svg = d3.select("#my_dataviz")
     .append("svg")
       .attr("width", width + margin + margin)
@@ -85,7 +86,7 @@
        
     
 
-
+    d3.select('#page').text(`${page_id}/3`)
     
     // create a tooltip
     var tooltip = d3.select("#my_dataviz")
