@@ -1,5 +1,5 @@
 <html>
-<div id="my_dataviz" style="float:left">
+<div id="viz1" style="float:left">
   <h1>Food poverty: global and regional </h1>
   <h3>global trends in food poverty: </h3>
   <h5> The global share of people in food poverty has decreased overall since 1990,and year-on-year since the start  </h2>
@@ -12,7 +12,7 @@
   <h5> has increased from 225 million in 1990 to 284 million in 2015</h5>
  
 </div>
-<div id="my_dataviz2" style="float:left">
+<div id="viz2" style="float:left">
   
   <h3> Figure 2: </h3>
   <h5> The global share of people living in food poverty in East Asia and Pacific has decreased from 50% in 1990 to less than 10% in 2015</h5>
@@ -31,7 +31,7 @@ var width =600;
 var height = 400;
 var margin =100;
 
-  var svg1 = d3.select("#my_dataviz")
+  var svg1 = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
       .attr("height", height + margin + margin)
@@ -39,7 +39,7 @@ var margin =100;
       .attr("transform",
             "translate(" + margin + "," + margin + ")")
     
- var svg2 = d3.select("#my_dataviz2")
+ var svg2 = d3.select("#viz2")
     .append("svg")
       .attr("width", width + margin + margin)
       .attr("height", height + margin + margin)
@@ -148,7 +148,7 @@ var margin =100;
 
 
           // create a tooltip
-    var tooltip = d3.select("#my_dataviz")
+    var tooltip = d3.select("#viz1")
       .append("div")
         .style("position", "absolute")
         .style("visibility", "visible")
@@ -177,7 +177,7 @@ function(data) {
   var y2 = d3.scaleLinear()
     .domain( [0,1500] )
     .range([ height, 0 ]);				
-  var tooltip2 = d3.select("#my_dataviz2")
+  var tooltip2 = d3.select("#viz2")
       .append("div")
         .style("position", "absolute")
         .style("visibility", "visible")
