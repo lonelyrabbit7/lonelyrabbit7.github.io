@@ -1,12 +1,4 @@
 <html>
-<!-- <div id="viz1" style="float:left">
-  <h3> Cost of a healthy diet and population unable to afford diet: 2020 </h3>
-  <h4>Bubble size scaled by number of people unable to afford a healthy diet</h4>
-  <h5> Hover over country bubbles to see data. </h5>
-</div> -->
- <!-- <button onclick="location.href = 'https://lonelyrabbit7.github.io/index.html';" id="1Next">prev</button>
-    <span id="page"></span>
-<button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Next</button> -->
 
 <div>
   <h2> Cost of a healthy diet and population unable to afford diet: 2020</h2>
@@ -91,7 +83,7 @@
             return d.population/200 >2?d.population/200 :5
         }) 
         .style("opacity",0.5)
-        .on("mouseover", function(d){return tooltip.style("visibility", "visible"). html(`  country: ${d.country} <br> cost of a healthy diet : ${d.cost}<br>${d.population} millions of people cannot afford a healthy diet 
+        .on("mouseover", function(d){return tooltip.style("visibility", "visible"). html(`country: ${d.country} <br> cost of a healthy diet : ${d.cost}<br>${d.population} millions of people cannot afford a healthy diet 
         <br>${d.Percent} % of its population`)
           })
         .on("mousemove", function(){return tooltip.style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY+10) + "px");})
