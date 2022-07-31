@@ -19,7 +19,7 @@
   var margin = {top: 100, right: 100, bottom: 100, left: 100},
       width = 600,
       height =400;
-  
+  d3.select('#page').text(`Page ${page} / 3`)
   var svg = d3.select("#my_dataviz")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
