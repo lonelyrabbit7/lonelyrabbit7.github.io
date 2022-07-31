@@ -1,5 +1,5 @@
 <html>
-<div id="my_dataviz" style="float:left">
+<div id="viz1" style="float:left">
   <h2> Poverty headcount ratio at $1.90 a day -World </h2>
   <h4>For almost 25 years, the number of people living in extreme poverty — on less than $1.90 per person per day was steadily </h4>
   <h4>declining. But the trend was interrupted in 2020, when poverty rose due to the disruption caused by the COVID-19 </h4>
@@ -21,7 +21,7 @@
       height =400;
   var page_id=1;
   d3.select('#page').text(`${page_id}/3`)
-  var svg = d3.select("#my_dataviz")
+  var svg = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -110,7 +110,7 @@
           .on("mousemove", function(){return tooltip.style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY+10) + "px");})
           .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     // create a tooltip
-    var tooltip = d3.select("#my_dataviz")
+    var tooltip = d3.select("#viz1")
       .append("div")
         .style("position", "absolute")
         .style("visibility", "visible")
