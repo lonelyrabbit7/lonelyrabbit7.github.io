@@ -27,12 +27,12 @@
   <h3> Figure 2: </h3>
   <h5> The global share of people living in food poverty in East Asia and Pacific has decreased from 50% in 1990 to less than 10% in 2015</h5>
   <h5> than 10% in 2015</h5>
-    <svg width=800 height=600 id="viz1" style="display:inline-block"></svg>
+    <svg width=800 height=600 id="viz2" style="display:inline-block"></svg>
     <p style="display:inline-block; vertical-align: top;" id="intro"></p>
     <div id="button_cont">
       <button onclick="location.href = 'https://lonelyrabbit7.github.io/index.html';" id="1Next">Prev</button>
       <span id="page"></span>
-       <button onclick="location.href = 'https://lonelyrabbit7.github.io/index3.html';" id="1Next">Next</button>
+      <button onclick="location.href = 'https://lonelyrabbit7.github.io/index3.html';" id="1Next">Next</button>
     </div>
 </div>
 
@@ -51,6 +51,17 @@ var width =600;
 var height = 400;
 var margin =100;
 var page_id=2;
+d3.select('#intro')
+        .html( `
+        <strong>global trends in food poverty:</strong><br>
+        The global share of people in food poverty has decreased overall since 1990,<br>
+        and year-on-year since the start of 1999 , falling from 22% to 6% in 2015.<br>
+        <br>
+        <strong>Regional trends in food poverty:</strong><br>
+        Since 1990, the number of people living in food poverty has increased by almost<br> 
+        20% in Middle East and North Africa, and over 25% in sub-Saharan Africa. These <br>
+        regions now represent 62% of all  people in food poverty<br>
+      `)
 
  d3.select('#page').text(`Page ${page_id}/3`)
   var svg1 = d3.select("#viz1")
