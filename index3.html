@@ -1,6 +1,7 @@
 <html>
 
 <div>
+  <div id="cont">
   <h2> Cost of a healthy diet and population unable to afford diet: 2020</h2>
   <h5>Bubble size scaled by number of people unable to afford a healthy diet</h5>
   <h5> Hover over country bubbles to see data. </h5>
@@ -9,6 +10,7 @@
     <div id="button_cont">
       <button onclick="location.href = 'https://lonelyrabbit7.github.io/index4.html';" id="1Next">Prev</button>
       <span id="page"></span>
+    </div>
     </div>
 </div>
 
@@ -94,7 +96,7 @@
    
     
     // create a tooltip
-    var tooltip = d3.select("#viz1")
+    var tooltip = d3.select("#cont")
       .append("div")
         .style("position", "absolute")
         .style("visibility", "visible")
