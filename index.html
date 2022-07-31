@@ -28,7 +28,13 @@
       .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")")
+  svg.append("circle")
    
+    .attr("fill", "#FFF68F")
+    .attr("stroke", "yellow")
+    .attr("cy",75)
+    .attr("cx",128)
+    .attr("r",10)
   d3.csv("massaged_data/1.csv",
 
     function(d){
