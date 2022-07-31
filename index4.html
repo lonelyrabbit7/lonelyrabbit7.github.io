@@ -42,15 +42,13 @@ var page_id=2;
 d3.select('#intro')
         .html( `
         <strong>global trends in food poverty:</strong><br>
-        The global share of people in food poverty has <br>
-        decreased overall since 1990,and year-on-year since <br>
-        the start of 1999 , falling from 22% to 6% in 2015.<br>
+        The global share of people in food poverty has decreased overall since 1990,<br>
+        and year-on-year since the start of 1999 , falling from 22% to 6% in 2015.<br>
         <br>
         <strong>Regional trends in food poverty:</strong><br>
-        Since 1990, the number of people living in food poverty<br>
-        has increased by almost 20% in Middle East and North <br>
-        Africa, and over 25% in sub-Saharan Africa. These regions <br>
-        now represent 62% of all  people in food poverty<br>
+        Since 1990, the number of people living in food poverty has increased by almost<br> 
+        20% in Middle East and North Africa, and over 25% in sub-Saharan Africa. These <br>
+        regions now represent 62% of all  people in food poverty<br>
       `)
 
  d3.select('#page').text(`Page ${page_id}/3`)
@@ -69,6 +67,44 @@ d3.select('#intro')
       .append("g")
       .attr("transform",
             "translate(" + margin + "," + margin + ")")
+
+  svg1.append("circle")
+   .attr("fill", "#D3D3D3")
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
+  svg1.append("text")
+        .attr("y",65)
+        .attr("x", 570)
+        .attr("fill", "#D3D3D3")
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("other region ");
+   svg1.append("circle")
+   .attr("fill", "#FF7F50")
+   .attr("cy",95)
+   .attr("cx",528)
+   .attr("r",7)
+   svg1.append("text")
+   .attr("fill", "#FF7F50")
+        .attr("y",85)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("Middle East ");
+   svg1.append("circle")
+   .attr("fill", "#CD661D")
+   .attr("cy",115)
+   .attr("cx",528)
+   .attr("r",7)
+   svg1.append("text")
+   .attr("fill", "#CD661D")
+        .attr("y",105)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("sub-Saharan Africa ");
+
 
 
   d3.csv("massaged_data/poverty.csv",
@@ -184,7 +220,30 @@ d3.select('#intro')
 
   });
 
-
+  svg2.append("circle")
+   .attr("fill", "#D3D3D3")
+   .attr("cy",75)
+   .attr("cx",528)
+   .attr("r",7)
+  svg2.append("text")
+        .attr("y",65)
+        .attr("x", 570)
+        .attr("fill", "#D3D3D3")
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text("other region ");
+   svg2.append("circle")
+   .attr("fill", "#CD3700")
+   .attr("cy",95)
+   .attr("cx",528)
+   .attr("r",7)
+   svg2.append("text")
+   .attr("fill", "#CD3700")
+        .attr("y",85)
+        .attr("x", 570)
+        .attr("dy", "1em")
+        .attr("font-size",15)
+        .text(" East Asia and Pacific ");
 d3.csv("massaged_data/poverty.csv",
 
 function(d){
