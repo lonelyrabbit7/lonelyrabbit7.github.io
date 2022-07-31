@@ -1,5 +1,5 @@
 <html>
-<div id="my_dataviz" style="float:left">
+<div id="viz1" style="float:left">
   <h1> Cost of a healthy diet and population unable to afford diet: 2020 </h1>
   <h3>Bubble size scaled by number of people unable to afford a healthy diet</h3>
   <h5> Hover over country bubbles to see data. </h5>
@@ -18,7 +18,7 @@
       width = 600,
       height = 400;
  var page_id=2;
-  var svg = d3.select("#my_dataviz")
+  var svg = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
       .attr("height", height + margin + margin)
@@ -89,7 +89,7 @@
     d3.select('#page').text(`${page_id}/3`)
     
     // create a tooltip
-    var tooltip = d3.select("#my_dataviz")
+    var tooltip = d3.select("#viz1")
       .append("div")
         .style("position", "absolute")
         .style("visibility", "visible")
