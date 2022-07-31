@@ -25,6 +25,7 @@
   var page_id=1;
   var s=1;
 function GoPage1(){ 
+   d3.select('#page_id').text(`Page ${page_id}/3`)
   d3.select('#bt1').style("visibility", "hidden")
   var margin = {top: 100, right: 100, bottom: 100, left: 100},
       width = 600,
@@ -170,13 +171,14 @@ function GoPage1(){
 
 }
 function GoPage3(){
-  d3.select("#hint").text(`hover on data points for further information`)
+
   var color=['pink','#CDCDB4','#FFD700','#EEB4B4','#CD5555']
   var margin = 100,
       width = 600,
       height = 400;
 
- d3.select('#page').text(`Page ${page_id}/3`)
+
+ d3.select('#page_id').text(`Page ${page_id}/3`)
   var svg = d3.select("#viz1")
     .append("svg")
       .attr("width", width + margin + margin)
@@ -202,7 +204,14 @@ svg.append("circle")
    .attr("cy",95)
    .attr("cx",528)
    .attr("r",7)
-  
+   svg.append("text")  
+        .attr("y",0)
+        .attr("x", 400)
+        .attr("dy", "1em")
+        .style("text-anchor", "left")
+        .attr("fill","black")
+        .attr("font-size",12)
+        .text("hover on data points for more information ");
    svg.append("text")
    .attr("fill", '#FFD700')
         .attr("y",85)
@@ -333,7 +342,7 @@ d3.select('#intro')
         now represent 62% of all  people in food poverty<br>
       `)
 
- d3.select('#page').text(`Page ${page_id}/3`)
+ d3.select('#page_id').text(`Page ${page_id}/3`)
  if(s==1){
   part1();
  }else{
